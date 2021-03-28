@@ -70,8 +70,7 @@ impl Prime {
         if index % 2 == 0 {
             return false;
         }
-        // self.bits[index]
-        unsafe { *self.bits.get_unchecked(index) }
+        self.bits[index]
         // self.bits.get(index)
     }
 
@@ -79,10 +78,7 @@ impl Prime {
         if index % 2 == 0 {
             return;
         }
-        unsafe {
-            *self.bits.get_unchecked_mut(index) = false;
-        }
-        // self.bits[index] = false;
+        self.bits[index] = false;
         // self.bits.clear(index);
     }
 
