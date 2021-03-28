@@ -1,0 +1,52 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "run",
+            "type": "shell",
+            "command": "./prime.exe",
+            "options": {
+                "cwd": "${workspaceFolder}/PrimeCPP/build/"
+            },
+            "problemMatcher": [],
+            "dependsOn": [
+                "build"
+            ]
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": [
+                "cmake --build build"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/PrimeCPP/"
+            },
+            "problemMatcher": [],
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": [
+                "cmake --build build --target clean"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/PrimeCPP/"
+            },
+            "problemMatcher": [],
+        },
+        {
+            "label": "configure",
+            "type": "shell",
+            "command": [
+                "cmake -Bbuild -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=true -DCMAKE_CXX_COMPILER='C:/Programs/LLVM/bin/clang.exe' -DCMAKE_RC_COMPILER='C:/Program Files (x86)/Windows Kits/10/bin/10.0.18362.0/x86/rc.exe' ."
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/PrimeCPP/"
+            },
+            "problemMatcher": [],
+        }
+    ]
+}
