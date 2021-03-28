@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "run",
+            "label": "run cpp",
             "type": "shell",
             "command": "./prime.exe",
             "options": {
@@ -12,11 +12,11 @@
             },
             "problemMatcher": [],
             "dependsOn": [
-                "build"
+                "build cpp"
             ]
         },
         {
-            "label": "build",
+            "label": "build cpp",
             "type": "shell",
             "command": [
                 "cmake --build build"
@@ -27,7 +27,7 @@
             "problemMatcher": [],
         },
         {
-            "label": "clean",
+            "label": "clean cpp",
             "type": "shell",
             "command": [
                 "cmake --build build --target clean"
@@ -38,7 +38,7 @@
             "problemMatcher": [],
         },
         {
-            "label": "configure",
+            "label": "configure cpp",
             "type": "shell",
             "command": [
                 "cmake -Bbuild -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=true -DCMAKE_CXX_COMPILER='C:/Programs/LLVM/bin/clang.exe' -DCMAKE_RC_COMPILER='C:/Program Files (x86)/Windows Kits/10/bin/10.0.18362.0/x86/rc.exe' ."
@@ -47,6 +47,28 @@
                 "cwd": "${workspaceFolder}/PrimeCPP/"
             },
             "problemMatcher": [],
-        }
+        },
+        {
+            "label": "build rust",
+            "type": "shell",
+            "command": [
+                "cargo build"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/PrimeRust/"
+            },
+            "problemMatcher": [],
+        },
+        {
+            "label": "run rust",
+            "type": "shell",
+            "command": [
+                "cargo run"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/PrimeRust/"
+            },
+            "problemMatcher": [],
+        },
     ]
 }
