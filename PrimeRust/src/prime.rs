@@ -1,23 +1,17 @@
 use std::{collections::HashMap, time::Duration};
 
-use crate::bitvec::Bitvec;
+use crate::bitvec::{Bitvec, Integer};
 
 pub struct Prime {
     sieve_size: usize,
-    bits: Vec<bool>,
-    // bits: Bitvec,
+    bits: Bitvec,
 }
 
 impl Prime {
     pub fn new(n: usize) -> Self {
-        let mut bitvec = Bitvec::new(n);
-        for index in 0..n {
-            bitvec.set(index);
-        }
         Prime {
             sieve_size: n,
-            bits: vec![true; n],
-            // bits: bitvec,
+            bits: Bitvec::new(n as Integer, true),
         }
     }
 
@@ -32,7 +26,7 @@ impl Prime {
                     break;
                 }
             }
-            for num in (factor * 3..self.sieve_size).step_by(factor * 2) {
+            for num in ((factor * 3)..self.sieve_size).step_by(factor * 2) {
                 self.clear_bit(num);
             }
             factor += 2;
@@ -62,16 +56,14 @@ impl Prime {
         if index % 2 == 0 {
             return false;
         }
-        self.bits[index]
-        // self.bits.get(index)
+        self.bits.get(index)
     }
 
     fn clear_bit(&mut self, index: usize) {
         if index % 2 == 0 {
             return;
         }
-        self.bits[index] = false;
-        // self.bits.clear(index);
+        self.bits.clear(index);
     }
 
     fn count_primes(&self) -> usize {
