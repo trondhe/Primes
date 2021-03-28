@@ -26,19 +26,11 @@ impl Prime {
         let q = (self.sieve_size as f32).sqrt() as usize;
 
         while factor < q {
-            // for num in factor..self.sieve_size {
-            //     if self.get_bit(num) {
-            //         factor = num;
-            //         break;
-            //     }
-            // }
-            let mut num = factor;
-            while num < self.sieve_size {
+            for num in factor..self.sieve_size {
                 if self.get_bit(num) {
                     factor = num;
                     break;
                 }
-                num += 1;
             }
             for num in (factor * 3..self.sieve_size).step_by(factor * 2) {
                 self.clear_bit(num);
