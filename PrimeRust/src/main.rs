@@ -1,9 +1,8 @@
 use std::time::{Duration, SystemTime};
 
-use prime::Prime;
+extern crate primelib;
 
-mod bitvec;
-mod prime;
+use primelib::Prime;
 
 const N_MAX: usize = 1_000_000;
 const DURATION_MAX: Duration = Duration::from_secs(10);

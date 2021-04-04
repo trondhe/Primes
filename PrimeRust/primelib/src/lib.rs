@@ -2,6 +2,8 @@ use std::{collections::HashMap, time::Duration};
 
 use crate::bitvec::{Bitvec, Integer};
 
+mod bitvec;
+
 pub struct Prime {
     sieve_size: usize,
     bits: Bitvec,

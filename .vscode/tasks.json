@@ -63,7 +63,7 @@
             "label": "run rust",
             "type": "shell",
             "command": [
-                "cargo run"
+                "cargo run --release"
             ],
             "options": {
                 "cwd": "${workspaceFolder}/PrimeRust/"
