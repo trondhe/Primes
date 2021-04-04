@@ -1,6 +1,6 @@
 use std::{collections::HashMap, time::Duration};
 
-use crate::bitvec::{Bitvec, Integer};
+use crate::bitvec::Bitvec;
 
 mod bitvec;
 
@@ -13,7 +13,7 @@ impl Prime {
     pub fn new(n: usize) -> Self {
         Prime {
             sieve_size: n,
-            bits: Bitvec::new(n as Integer, true),
+            bits: Bitvec::new(n, true),
         }
     }
 

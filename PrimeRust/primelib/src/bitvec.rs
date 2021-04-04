@@ -1,7 +1,7 @@
 #![allow(dead_code)]
 use std::mem::size_of;
 
-pub type Integer = u32;
+type Integer = u8;
 
 pub struct Bitvec {
     data: Vec<Integer>,
@@ -10,17 +10,18 @@ pub struct Bitvec {
 
 impl Bitvec {
     const VALUE_SIZE: usize = size_of::<Integer>() * 8;
-    pub fn new(bit_count: Integer, init_as: bool) -> Self {
+    pub fn new(bit_count: usize, init_as: bool) -> Self {
         let vec_size = (bit_count as f64 / Bitvec::VALUE_SIZE as f64).ceil() as usize;
-        let init_value: Integer;
-        if init_as {
-            init_value = Integer::MAX;
-        } else {
-            init_value = 0;
-        }
+        let init_value: Integer = {
+            if init_as {
+                Integer::MAX
+            } else {
+                0
+            }
+        };
         Self {
             data: vec![init_value; vec_size],
-            bit_count: bit_count as usize,
+            bit_count,
         }
     }
 
